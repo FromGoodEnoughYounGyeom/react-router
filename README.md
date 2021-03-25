@@ -1,70 +1,18 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### 리액트 라우팅을 사용하지 않은 라우팅의 구현과 문제점
 
-In the project directory, you can run:
+[react-route](https://user-images.githubusercontent.com/68359858/112443767-ad770e80-8d90-11eb-8ce2-56038e4934cf.png)
 
-### `yarn start`
+이런식으로 헤더내에 특정 메뉴 버튼을 클릭하면 상응하는 컴포넌트로 comp 상태가 바뀌기 때문에 화면에서 main 부분이 갱신되게 된다. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+하지만 이런 방식으로 라우팅을 구현하게 되면 브라우저 사용자 입장에서 다음과 같은 문제가 발생한다.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- 특정 페이지에 대한 **즐겨찾기 등록불가**, 컴포넌트 전환되어도 브라우저 주소창의 url은 고정되어 있기 때문이다.
+- **뒤로 가기 버튼**을 누르면 해당 앱 내에서 이전 페이지로 이동하는 것이 아니라 그 전에 서핑하던 **다른 웹사이트**로 이동해버린다.
+- **새로고침 버튼**을 누르면 사용중이던 컴포넌트가 아닌 최초에 렌더링 되었던 **사이트 메인으로 이동**한다. 
+- seo(검색 엔진 최적화) 측면에서도 일반 웹사이트들과 차이가 있어서 검색 엔진에 의해 **원치않는 방식으로 색인**이 될 수 있음.
 
-### `yarn test`
+### React Router ?
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+React Router는 위의 문제점을 해결하기 위해 표준처럼 사용되고 있는 네비게이션 라이브러리이다. React Router를 사용하면 앱에서 발생하는 라우팅이 location 과 history 같은 wep API 와 연동된다. 
